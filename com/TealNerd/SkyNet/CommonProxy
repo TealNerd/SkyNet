@@ -1,0 +1,11 @@
+package com.TealNerd.SkyNet;
+
+public class CommonProxy {
+
+	public void registerListeners() {
+
+
+	}
+
+        
+}
