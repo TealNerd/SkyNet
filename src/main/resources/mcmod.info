@@ -1,0 +1,16 @@
+[
+{
+  "modid": "skynet",
+  "name": "SkyNet",
+  "description": "Player join alerts",
+  "version": "1.2.0",
+  "mcversion": "1.10",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["TealNerd","Ben","Uyuxo"],
+  "credits": "TTK2 for giving us hope.",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
