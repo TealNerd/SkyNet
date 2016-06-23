@@ -1,4 +1,4 @@
-package com.biggestnerd.skynet;
+package com.TealNerd.SkyNet;
  
 import java.util.ArrayList;
 import java.util.Collection;
@@ -11,7 +11,6 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
-import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -22,17 +21,16 @@ import net.minecraftforge.fml.common.gameevent.TickEvent.ClientTickEvent;
  
 import org.lwjgl.input.Keyboard;
  
-@Mod(modid="skynet", name="SkyNet", version="1.1.0")
+@Mod(modid="skynet", name="SkyNet", version="1.2.0")
 public class SkyNet {
    
     static Minecraft mc = Minecraft.getMinecraft();
     static boolean isEnabled = true;
     public static KeyBinding toggle;
-    static List<String> previousPlayerList = new ArrayList();
+    static List<String> previousPlayerList = new ArrayList<String>();
    
     @EventHandler
     public void preInit(FMLPreInitializationEvent event)  {
-        FMLCommonHandler.instance().bus().register(this);
         MinecraftForge.EVENT_BUS.register(this);
         toggle = new KeyBinding("Toggle SkyNet", Keyboard.KEY_I, "SkyNet");
         ClientRegistry.registerKeyBinding(toggle);    
@@ -55,15 +53,15 @@ public class SkyNet {
         if(event.phase == TickEvent.Phase.START) {
             if(SkyNet.isEnabled) {
                 if(mc.theWorld != null) {      
-                ArrayList<String> playerList = new ArrayList();
-                Collection players = mc.getNetHandler().getPlayerInfoMap();
+                ArrayList<String> playerList = new ArrayList<String>();
+                Collection<NetworkPlayerInfo> players = mc.getConnection().getPlayerInfoMap();
                 for(Object o : players) {
                     if((o instanceof NetworkPlayerInfo)) {
                         NetworkPlayerInfo info = (NetworkPlayerInfo)o;
                         playerList.add(SkyNet.filterChatColors(info.getGameProfile().getName()));
                     }
                 }
-                ArrayList<String> temp = (ArrayList)playerList.clone();
+                ArrayList<String> temp = (ArrayList<String>)playerList.clone();
                 playerList.removeAll(SkyNet.previousPlayerList);
                 SkyNet.previousPlayerList.removeAll(temp);
                 for(String player : SkyNet.previousPlayerList) {
