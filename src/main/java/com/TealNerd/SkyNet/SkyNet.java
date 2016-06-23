@@ -21,7 +21,7 @@ import net.minecraftforge.fml.common.gameevent.TickEvent.ClientTickEvent;
  
 import org.lwjgl.input.Keyboard;
  
-@Mod(modid="skynet", name="SkyNet", version="1.1.0")
+@Mod(modid="skynet", name="SkyNet", version="1.2.0")
 public class SkyNet {
    
     static Minecraft mc = Minecraft.getMinecraft();
